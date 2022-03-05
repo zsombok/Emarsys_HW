@@ -20,7 +20,7 @@ public class DateCalculator {
     } catch (OutOfWorkingHoursException e) {
       System.err.println(e.getMessage());
     }
-    return submitDate;
+    return dateTimeHandler.addHoursToWorkDateTimeWhileSkippingWeekend(submitDate, turnaroundTime);
   }
 
 }

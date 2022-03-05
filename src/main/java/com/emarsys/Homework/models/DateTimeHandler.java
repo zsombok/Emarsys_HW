@@ -20,4 +20,27 @@ public class DateTimeHandler {
       throw new OutOfWorkingHoursException();
     }
   }
+
+  public LocalDateTime addHoursToWorkDateTimeWhileSkippingWeekend(LocalDateTime dateTime, int hours) {
+    int wholeDaysToAdd = hours / WORKING_HOURS_DURATION;
+    int hoursToAdd = hours % WORKING_HOURS_DURATION;
+    int supposedEndHour = dateTime.getHour() + hoursToAdd;
+
+    if (supposedEndHour >= WORKING_HOURS_END) {
+      wholeDaysToAdd++;
+      hoursToAdd = supposedEndHour - WORKING_HOURS_END;
+    }
+
+    int actuallyAddedDays = 0;
+    while (actuallyAddedDays < wholeDaysToAdd) {
+      dateTime = dateTime.plusDays(1);
+      DayOfWeek day = dateTime.getDayOfWeek();
+      if (day != DayOfWeek.SATURDAY && day != DayOfWeek.SUNDAY) {
+        actuallyAddedDays++;
+      }
+    }
+
+    return dateTime.plusHours(hoursToAdd);
+
+  }
 }
