@@ -14,12 +14,8 @@ public class DateCalculator {
     this.dateTimeHandler = dateTimeHandler;
   }
 
-  public LocalDateTime CalculateDueDate(LocalDateTime submitDate, int turnaroundTime) {
-    try {
-      dateTimeHandler.validateWorkingHours(submitDate);
-    } catch (OutOfWorkingHoursException e) {
-      System.err.println(e.getMessage());
-    }
+  public LocalDateTime CalculateDueDate(LocalDateTime submitDate, int turnaroundTime) throws OutOfWorkingHoursException {
+    dateTimeHandler.validateWorkingHours(submitDate);
     return dateTimeHandler.addHoursToWorkDateTimeWhileSkippingWeekend(submitDate, turnaroundTime);
   }
 
