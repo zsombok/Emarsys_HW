@@ -3,14 +3,16 @@ package com.emarsys.Homework.models;
 import com.emarsys.Homework.exceptions.OutOfWorkingHoursException;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DateTimeHandler {
 
   public static final int WORKING_HOURS_START = 9;
   public static final int WORKING_HOURS_END = 17;
   public static final int WORKING_HOURS_DURATION = WORKING_HOURS_END - WORKING_HOURS_START;
 
-  public static void validateWorkingHours(LocalDateTime dateTime) throws OutOfWorkingHoursException {
+  public void validateWorkingHours(LocalDateTime dateTime) throws OutOfWorkingHoursException {
     DayOfWeek day = dateTime.getDayOfWeek();
     int hour = dateTime.getHour();
 
