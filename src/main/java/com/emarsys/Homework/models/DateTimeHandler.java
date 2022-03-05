@@ -24,11 +24,11 @@ public class DateTimeHandler {
   public LocalDateTime addHoursToWorkDateTimeWhileSkippingWeekend(LocalDateTime dateTime, int hours) {
     int wholeDaysToAdd = hours / WORKING_HOURS_DURATION;
     int hoursToAdd = hours % WORKING_HOURS_DURATION;
-    int supposedEndHour = dateTime.getHour() + hoursToAdd;
+    int endHour = dateTime.getHour() + hoursToAdd;
 
-    if (supposedEndHour >= WORKING_HOURS_END) {
+    if (endHour >= WORKING_HOURS_END) {
       wholeDaysToAdd++;
-      hoursToAdd = supposedEndHour - WORKING_HOURS_END;
+      endHour = endHour - WORKING_HOURS_END + WORKING_HOURS_START;
     }
 
     int actuallyAddedDays = 0;
@@ -40,7 +40,7 @@ public class DateTimeHandler {
       }
     }
 
-    return dateTime.plusHours(hoursToAdd);
+    return dateTime.withHour(endHour);
 
   }
 }
