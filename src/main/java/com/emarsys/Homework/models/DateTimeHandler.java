@@ -16,7 +16,7 @@ public class DateTimeHandler {
     DayOfWeek day = dateTime.getDayOfWeek();
     int hour = dateTime.getHour();
 
-    if (day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY || hour < WORKING_HOURS_START || hour > WORKING_HOURS_END) {
+    if (day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY || hour < WORKING_HOURS_START || hour >= WORKING_HOURS_END) {
       throw new OutOfWorkingHoursException();
     }
   }
