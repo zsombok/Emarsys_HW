@@ -23,7 +23,7 @@ public class HomeworkApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
     try {
-      LocalDateTime result = dateCalculator.CalculateDueDate(LocalDateTime.parse("2022-03-04T17:00"), 11);
+      LocalDateTime result = dateCalculator.CalculateDueDate(LocalDateTime.parse("2022-03-04T16:00"), 11);
       System.out.println(result);
     } catch (OutOfWorkingHoursException e) {
       System.err.println(e.getMessage());

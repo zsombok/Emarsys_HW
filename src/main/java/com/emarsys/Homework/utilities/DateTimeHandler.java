@@ -41,6 +41,5 @@ public class DateTimeHandler {
     }
 
     return dateTime.withHour(endHour);
-
   }
 }
