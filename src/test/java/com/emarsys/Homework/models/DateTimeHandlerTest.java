@@ -27,18 +27,14 @@ class DateTimeHandlerTest {
     @Test
     @DisplayName("Should throw exception when argument is out of working hours")
     void throwsOutOfWorkingHoursException_when_argumentIsOutOfWorkingHours() {
-      OutOfWorkingHoursException exception = assertThrows(OutOfWorkingHoursException.class, () -> {
-        dateTimeHandler.validateWorkingHours(LocalDateTime.parse("2022-03-04T17:00"));
-      });
+      OutOfWorkingHoursException exception = assertThrows(OutOfWorkingHoursException.class, () -> dateTimeHandler.validateWorkingHours(LocalDateTime.parse("2022-03-04T17:00")));
       assertTrue(exception.getMessage().contains("Submit date/time is out of working hours!"));
     }
 
     @Test
     @DisplayName("Should not throw exception when argument is in working hours")
     void throwsNothing_when_argumentIsInWorkingHours() {
-      assertDoesNotThrow(() -> {
-        dateTimeHandler.validateWorkingHours(LocalDateTime.parse("2022-03-04T12:00"));
-      });
+      assertDoesNotThrow(() -> dateTimeHandler.validateWorkingHours(LocalDateTime.parse("2022-03-04T12:00")));
     }
   }
 
