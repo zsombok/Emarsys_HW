@@ -1,4 +1,4 @@
-package com.emarsys.Homework.models;
+package com.emarsys.Homework.utilities;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;

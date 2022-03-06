@@ -1,4 +1,4 @@
-package com.emarsys.Homework.models;
+package com.emarsys.Homework.utilities;
 
 import com.emarsys.Homework.exceptions.OutOfWorkingHoursException;
 import java.time.DayOfWeek;
