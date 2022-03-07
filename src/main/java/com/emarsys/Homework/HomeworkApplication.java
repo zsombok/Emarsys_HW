@@ -2,10 +2,11 @@ package com.emarsys.Homework;
 
 import com.emarsys.Homework.exceptions.OutOfWorkingHoursException;
 import com.emarsys.Homework.utilities.DateCalculator;
-import java.time.LocalDateTime;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.time.LocalDateTime;
 
 @SpringBootApplication
 public class HomeworkApplication implements CommandLineRunner {
@@ -25,7 +26,7 @@ public class HomeworkApplication implements CommandLineRunner {
     try {
       LocalDateTime result = dateCalculator.CalculateDueDate(LocalDateTime.parse("2022-03-04T16:00"), 11);
       System.out.println(result);
-    } catch (OutOfWorkingHoursException e) {
+    } catch (OutOfWorkingHoursException | IllegalArgumentException e) {
       System.err.println(e.getMessage());
     }
   }

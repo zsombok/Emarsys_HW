@@ -1,9 +1,10 @@
 package com.emarsys.Homework.utilities;
 
 import com.emarsys.Homework.exceptions.OutOfWorkingHoursException;
+import org.springframework.stereotype.Component;
+
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
-import org.springframework.stereotype.Component;
 
 @Component
 public class DateTimeHandler {
@@ -18,6 +19,12 @@ public class DateTimeHandler {
 
     if (day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY || hour < WORKING_HOURS_START || hour >= WORKING_HOURS_END) {
       throw new OutOfWorkingHoursException();
+    }
+  }
+
+  public void validateTurnaroundTime(int time) throws IllegalArgumentException {
+    if (time < 1) {
+      throw new IllegalArgumentException("Please provide at least one hour of turnaround time.");
     }
   }
 

@@ -1,8 +1,9 @@
 package com.emarsys.Homework.utilities;
 
 import com.emarsys.Homework.exceptions.OutOfWorkingHoursException;
-import java.time.LocalDateTime;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 @Component
 public class DateCalculator {
@@ -13,8 +14,9 @@ public class DateCalculator {
     this.dateTimeHandler = dateTimeHandler;
   }
 
-  public LocalDateTime CalculateDueDate(LocalDateTime submitDate, int turnaroundTime) throws OutOfWorkingHoursException {
+  public LocalDateTime CalculateDueDate(LocalDateTime submitDate, int turnaroundTime) throws OutOfWorkingHoursException, IllegalArgumentException {
     dateTimeHandler.validateWorkingHours(submitDate);
+    dateTimeHandler.validateTurnaroundTime(turnaroundTime);
     return dateTimeHandler.addHoursToWorkDateTimeWhileSkippingWeekend(submitDate, turnaroundTime);
   }
 
